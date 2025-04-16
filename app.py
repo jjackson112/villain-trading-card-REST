@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request
+from flask import Flask, request, jsonify
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
 
@@ -89,6 +89,14 @@ def delete_villain():
   else:
     return jsonify({"errors": ["Oops! A villain with that name doesn't exist!"]})
 
+@app.route("/api/", methods=["GET"])
+def get_endpoints():
+  endpoints = {
+    "/api/villains": "GET - Retrieves all villain data from the database.",
+    "/api/villains/delete": "POST - Deletes villains from database",
+    "/api/villains/add": "POST - Adds villains to the database"
+  }
+  return jsonify(endpoints)
 
 # Run the flask server
 app.run(host="0.0.0.0", port=8080)
