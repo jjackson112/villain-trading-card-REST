@@ -3,7 +3,7 @@ from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
 
 # Initialize the Flask application
-app = Flask(__name__)
+app = Flask("app")
 
 app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///villain.db"
 db = SQLAlchemy(app)
