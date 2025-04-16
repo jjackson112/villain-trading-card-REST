@@ -43,19 +43,19 @@ def delete():
 # create a dictionary with 5 key-value pairs
 # key value pairs should match objects from Villain class 
 
-@app.route("/api/villains", methods=["GET"])
+@app.route("/api/villains/", methods=["GET"])
 def get_villains():
-  villains=Villain.query.all()
-  data = []
-  for villain in villains:
-	  data.append({
+	villains = Villain.query.all()
+	data = []
+	for villain in villains:
+		data.append({
 		    "name": villain.name,
 		    "description": villain.description,
 		    "interests": villain.interests,
 		    "url": villain.url,
 		    "date_added": villain.date_added
 		})
-    return jsonify(data)
+	return jsonify(data)
 
 #ADD CODE: add /api/villains route here
 # add jsonify function and success response status 
