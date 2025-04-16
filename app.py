@@ -38,14 +38,27 @@ def delete():
   return app.send_static_file("deletevillain.html")
 ####
 
+# create a for loop to populate the empty data list
+# use append method to add data
+# create a dictionary with 5 key-value pairs
+# key value pairs should match objects from Villain class 
+
 @app.route("/api/villains", methods=["GET"])
 def get_villains():
   villains=Villain.query.all()
   data = []
-  return
+  for villain in villains:
+	  data.append({
+		    "name": villain.name,
+		    "description": villain.description,
+		    "interests": villain.interests,
+		    "url": villain.url,
+		    "date_added": villain.date_added
+		})
+    return jsonify(data)
 
 #ADD CODE: add /api/villains route here
-
+# add jsonify function and success response status 
 @app.route("/api/villains/add", methods=["POST"])
 def add_villain():
   errors = []
@@ -76,7 +89,7 @@ def add_villain():
     new_villain = Villain(name=name,description=description, interests=interests, url=url)
     db.session.add(new_villain)
     db.session.commit()
-  return
+  return jsonify({"status":"success"})
 
 @app.route("/api/villains/delete", methods=["POST"])
 def delete_villain():
