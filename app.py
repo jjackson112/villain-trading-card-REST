@@ -105,11 +105,12 @@ def delete_villain():
 @app.route("/api/", methods=["GET"])
 def get_endpoints():
   endpoints = {
-    "/api/villains": "GET - Retrieves all villain data from the database.",
+    "/api/villains/": "GET - Retrieves all villain data from the database.",
     "/api/villains/delete": "POST - Deletes villains from database",
     "/api/villains/add": "POST - Adds villains to the database"
   }
   return jsonify(endpoints)
 
 # Run the flask server
+if __name__ == "__main__"
 app.run(host="0.0.0.0", port=8080)
