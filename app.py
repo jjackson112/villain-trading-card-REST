@@ -112,4 +112,4 @@ def get_endpoints():
   return jsonify(endpoints)
 
 # Run the flask server
-app.run(host="0.0.0.0", port=8080)
+# app.run(host="0.0.0.0", port=8080)
